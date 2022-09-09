@@ -11,6 +11,7 @@ public class PostsResponseDTO {
 
     private Long id;
     private String author;
+    private String title;
     private String description;
     private int views;
     private int like;
@@ -19,6 +20,7 @@ public class PostsResponseDTO {
     @Builder
     public PostsResponseDTO(Post post){
         this.id = post.getPostId();
+        this.title = post.getTitle();
         this.author = post.getAuthor();
         this.description = post.getDescription();
         this.views = post.getViews();

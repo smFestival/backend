@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 public class PostListResponseDTO {
 
     private Long id;
+    private String title;
     private String author;
     private String description;
     private int views;
@@ -19,6 +20,7 @@ public class PostListResponseDTO {
     @Builder
     public PostListResponseDTO(Post post){
         this.id = post.getPostId();
+        this.title = post.getTitle();
         this.author = post.getAuthor();
         this.description = post.getDescription();
         this.views = post.getViews();

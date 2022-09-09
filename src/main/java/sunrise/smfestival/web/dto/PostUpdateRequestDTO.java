@@ -14,5 +14,7 @@ public class PostUpdateRequestDTO {
     @NotEmpty
     private String pw;
     @NotEmpty
+    private String title;
+    @NotEmpty
     private String content;
 }

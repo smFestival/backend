@@ -1,11 +1,12 @@
 package sunrise.smfestival.web.dto;
 
-import com.sun.istack.NotNull;
 import lombok.Getter;
+
+import javax.validation.constraints.NotEmpty;
 
 @Getter
 public class PostDeleteRequestDTO {
 
-    @NotNull
+    @NotEmpty
     private String pw;
 }

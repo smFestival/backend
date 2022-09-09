@@ -24,6 +24,9 @@ public class Post {
     private Long postId;
 
     @Column
+    private String title;
+
+    @Column
     private String author;
 
     @Column
@@ -45,7 +48,8 @@ public class Post {
     private LocalDateTime modifiedDate;
 
     @Builder
-    public Post(Long postId, String author, String pw, String description){
+    public Post(Long postId,String title, String author, String pw, String description){
+        this.title = title;
         this.postId = postId;
         this.author = author;
         this.pw = pw;
@@ -68,7 +72,8 @@ public class Post {
         this.views += 1;
     }
 
-    public void updateContent(String content){
+    public void updateContent(String title,String content){
+        this.title = title;
         this.description = content;
     }
 }
