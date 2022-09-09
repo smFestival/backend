@@ -52,7 +52,7 @@ public class PostController {
         postService.deletePost(id,requestDTO);
     }
 
-    @PostMapping("/like/{id}")
+    @PostMapping("/{id}/like")
     public ResponseEntity<String> like(@PathVariable("id") Long id,
                                      HttpServletRequest httpServletRequest,
                                      @RequestBody PostLikeRequestDTO requestDTO){
