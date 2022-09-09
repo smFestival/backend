@@ -21,6 +21,7 @@ public class PostsaveRequestDTO {
     public Post toEntity(){
        return Post.builder()
                 .author(author)
+               .title(title)
                 .pw(pw)
                 .description(description)
                 .build();
