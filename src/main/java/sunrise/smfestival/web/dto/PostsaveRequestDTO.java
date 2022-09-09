@@ -4,14 +4,17 @@ import lombok.Getter;
 import org.springframework.lang.Nullable;
 import sunrise.smfestival.entity.Post.Post;
 
+import javax.validation.constraints.NotEmpty;
+
 @Getter
 public class PostsaveRequestDTO {
 
-    @Nullable
+
     private String author;
+    @NotEmpty
     private String pw;
+    @NotEmpty
     private String description;
-    private int currentPage;
 
     public Post toEntity(){
        return Post.builder()

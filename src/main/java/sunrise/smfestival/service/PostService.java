@@ -11,10 +11,12 @@ import sunrise.smfestival.entity.Like.Likes;
 import sunrise.smfestival.entity.Like.LikeRepository;
 import sunrise.smfestival.entity.Post.Post;
 import sunrise.smfestival.entity.Post.PostRepository;
+import sunrise.smfestival.web.dto.PostListResponseDTO;
 import sunrise.smfestival.web.dto.PostsResponseDTO;
 import sunrise.smfestival.web.dto.PostDeleteRequestDTO;
 import sunrise.smfestival.web.dto.PostsaveRequestDTO;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,9 +27,9 @@ public class PostService {
     private final LikeRepository likeRepository;
 
     @Transactional(readOnly = true)
-    public Page<PostsResponseDTO> getPosts(Pageable pageable){
+    public List<PostListResponseDTO> getPosts(Pageable pageable){
         Page<Post> page = postRepository.findAll(pageable);
-        return page.map(PostsResponseDTO::new);
+        return page.map(PostListResponseDTO::new).getContent();
     }
 
     @Transactional(readOnly = true)
