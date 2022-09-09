@@ -58,7 +58,7 @@ public class PostService {
             throw new CustomException(ErrorCode.PASSWORD_NOT_MATCHED);
         }
 
-        post.updateContent(requestDTO.getDescription());
+        post.updateContent(requestDTO.getTitle(),requestDTO.getDescription());
 
         return post.getPostId();
     }
