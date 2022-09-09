@@ -9,12 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sunrise.smfestival.service.PostService;
-import sunrise.smfestival.web.dto.PostLikeRequestDTO;
-import sunrise.smfestival.web.dto.PostsResponseDTO;
-import sunrise.smfestival.web.dto.PostDeleteRequestDTO;
-import sunrise.smfestival.web.dto.PostsaveRequestDTO;
+import sunrise.smfestival.web.dto.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RequestMapping("/post")
@@ -24,7 +22,7 @@ public class PostController {
     private final PostService postService;
 
     @GetMapping("/")
-    public Page<PostsResponseDTO> getPostList(@PageableDefault(sort = "id",direction = Sort.Direction.DESC)
+    public List<PostListResponseDTO> getPostList(@PageableDefault(sort = "postId",direction = Sort.Direction.DESC)
                            Pageable pageable){
         return postService.getPosts(pageable);
     }

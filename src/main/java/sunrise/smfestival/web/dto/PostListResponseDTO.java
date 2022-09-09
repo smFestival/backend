@@ -1,10 +1,12 @@
 package sunrise.smfestival.web.dto;
 
 import lombok.Builder;
+import lombok.Getter;
 import sunrise.smfestival.entity.Post.Post;
 
 import java.time.LocalDateTime;
 
+@Getter
 public class PostListResponseDTO {
 
     private Long id;
