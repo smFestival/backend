@@ -14,6 +14,7 @@ import sunrise.smfestival.web.dto.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+@CrossOrigin
 @RequiredArgsConstructor
 @RequestMapping("/post")
 @RestController
