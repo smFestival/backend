@@ -1,10 +1,7 @@
 package sunrise.smfestival.web;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,11 +19,12 @@ public class PostController {
 
     private final PostService postService;
 
-    @GetMapping("/")
-    public List<PostListResponseDTO> getPostList(@PageableDefault(sort = "postId",direction = Sort.Direction.DESC)
-                           Pageable pageable){
-        return postService.getPosts(pageable);
-    }
+@GetMapping("/")
+public List<PostListResponseDTO> getPostList(@RequestParam(required = false, defaultValue = "0",value = "pageNumber") int pageNumber,
+        @RequestParam(required = false,defaultValue = "10",value = "pageSize") int pageSize,
+        final Pageable pageable){
+    return postService.getPosts(pageable,pageNumber,pageSize);
+}
 
     @GetMapping("/{id}")
     public PostsResponseDTO getPost(@PathVariable("id") Long id){

@@ -2,7 +2,9 @@ package sunrise.smfestival.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sunrise.smfestival.Exception.CustomException;
@@ -26,11 +28,19 @@ public class PostService {
     private final PostRepository postRepository;
     private final LikeRepository likeRepository;
 
-    @Transactional(readOnly = true)
-    public List<PostListResponseDTO> getPosts(Pageable pageable){
-        Page<Post> page = postRepository.findAll(pageable);
-        return page.map(PostListResponseDTO::new).getContent();
-    }
+//    @Transactional(readOnly = true)
+//    public List<PostListResponseDTO> getPosts(Pageable pageable){
+//        Page<Post> page = postRepository.findAll(pageable);
+//        return page.map(PostListResponseDTO::new).getContent();
+//    }
+@Transactional(readOnly = true)
+public List<PostListResponseDTO> getPosts(Pageable pageable, int pageNumber, int pageSize){
+    pageNumber = (pageNumber == 0) ? pageNumber : pageNumber-1;
+    pageable = PageRequest.of(pageNumber,pageSize, Sort.Direction.DESC,"postId");
+
+    Page<Post> page = postRepository.findAll(pageable);
+    return page.map(PostListResponseDTO::new).getContent();
+}
 
     @Transactional(readOnly = true)
     public PostsResponseDTO getPost(Long id){

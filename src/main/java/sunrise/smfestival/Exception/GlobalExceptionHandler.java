@@ -30,13 +30,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(error,HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @Order(Ordered.LOWEST_PRECEDENCE)
-    @ExceptionHandler(value = RuntimeException.class)
-    public ResponseEntity<HashMap<String,String>> RuntimeException(RuntimeException e){
-        HashMap<String,String> error = new HashMap<>();
-        error.put("error","서버의 오류로 인하여 처리되지 못 하였습니다 관리자에게 문의해주세요");
-        e.printStackTrace();
-        return new ResponseEntity<>(error,HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+//    @Order(Ordered.LOWEST_PRECEDENCE)
+//    @ExceptionHandler(value = RuntimeException.class)
+//    public ResponseEntity<HashMap<String,String>> RuntimeException(RuntimeException e){
+//        HashMap<String,String> error = new HashMap<>();
+//        error.put("error","서버의 오류로 인하여 처리되지 못 하였습니다 관리자에게 문의해주세요");
+//        e.printStackTrace();
+//        return new ResponseEntity<>(error,HttpStatus.INTERNAL_SERVER_ERROR);
+//    }
 
 }
